@@ -2,17 +2,17 @@
 
 This repo contains code for "[A Multi-Aspect Framework for Counter Narrative Evaluation using Large Language Models](https://arxiv.org/abs/2402.11676)".
 
-# Introduction
+## Introduction
 
 In this work, we propose a novel counter narrative evaluation framework that prompts LLMs to generate evaluation scores and feedback for generated counter narrative candidates using defined aspects derived from NGO guidelines. We validate this approach by measuring the correlation between LLM and human-generated scores from Amazon Mechanical Turk, demonstrating the potential of LLM-as-a-Judge as a multi-aspect, interpretable counter narrative evaluation strategy.
 
 <div align="center">
-    <img src="methodology.png" width="80%" title="Methodology Figure">
+    <img src="methodology.png" title="Methodology Figure">
 </div>
 
 Figure 2: Validation pipeline for our counter narrative evaluation framework. (Left) Evaluation prompt template including task description, a ChatGPT-generated aspect score rubric, and hate speech/counter narrative pair. (Right) LLM evaluation scores are generated for counter narratives and are compared to AMT-annotated evaluation.
 
-# Evaluation Aspects
+## Evaluation Aspects
 
 We define key aspects of counter narrative quality for evaluation, specifically drawing inspiration from NGO guidelines that
 advocate for constructive, focused counter narrative responses that challenge hate speech claims while de-escalating encounters in a non-toxic manner. When using our LLM evaluation framework, we utilize the following aspects:
@@ -25,11 +25,15 @@ advocate for constructive, focused counter narrative responses that challenge ha
 
 Our LLM evaluation prompts can be found in `evaluation/prompts.csv`.
 
-# Approach
+## Approach
+
+### Generation
 
 In order to test the performance of LLM-as-a-Judge strategies for counter narrative evaluation, we generate evaluation scores to generated counter narrative candidates and measure the correlation to human scores collected from Amazon Mechanical Turk (AMT). We generated counter narrative responses to 180 test set examples from the Multitarget-CONAN dataset using finetuned [DialoGPT](https://huggingface.co/microsoft/DialoGPT-medium), ChatGPT and [Vicuna-v1.3 33b](https://huggingface.co/lmsys/vicuna-33b-v1.3). 
 
 All generation code and generated counter narrative candidates can be found in `generation`.
+
+### Evaluation
 
 We then evaluate the generated counter narrative candidates using our evaluation framework to generate multi-aspect evaluation scores and interpretable evaluation feedback. We prompt the following LLMs:
 - GPT-3.5-Turbo
@@ -40,6 +44,8 @@ We then evaluate the generated counter narrative candidates using our evaluation
 We also evaluate the generated counter narrative candidates using the automatic metrics [BLEU](https://www.nltk.org/_modules/nltk/translate/bleu_score.html), [ROUGE](https://pypi.org/project/rouge-score/), [METEOR](https://huggingface.co/spaces/evaluate-metric/meteor), [BERTScore](https://huggingface.co/spaces/evaluate-metric/bertscore), and [BARTScore](https://github.com/neulab/BARTScore) and compare their performance to our counter narrative evaluation framework. 
 
 All evaluation code and prompts can be found in `evaluation`.
+
+### Correlation
 
 We measure the [Pearson](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.pearsonr.html), [Spearman](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.spearmanr.html), and [Kendall tau](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.kendalltau.html) correlations between each of the automatic evaluation metrics and human-annotated evalaution scores from AMT using Scipy. 
 
