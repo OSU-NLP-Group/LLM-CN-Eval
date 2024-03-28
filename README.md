@@ -14,8 +14,7 @@ Figure 2: Validation pipeline for our counter narrative evaluation framework. (L
 
 ## Evaluation Aspects
 
-We define key aspects of counter narrative quality for evaluation, specifically drawing inspiration from NGO guidelines that
-advocate for constructive, focused counter narrative responses that challenge hate speech claims while de-escalating encounters in a non-toxic manner. When using our LLM evaluation framework, we utilize the following aspects:
+We define key aspects of counter narrative quality for evaluation, specifically drawing inspiration from NGO guidelines that advocate for constructive, focused counter narrative responses that challenge hate speech claims while de-escalating encounters in a non-toxic manner. When using our LLM evaluation framework, we utilize the following aspects:
 
 - Opposition: how much the counter narrative opposes and contradicts the hate speech example through the expression of an opposing sentiment regardless of the argument’s effectiveness or persuasiveness.
 - Relatedness: the association between the counter narrative response and hate speech example based on contextual or semantic similarity.
@@ -29,7 +28,7 @@ Our LLM evaluation prompts can be found in `evaluation/prompts.csv`.
 
 ### Generation
 
-In order to test the performance of LLM-as-a-Judge strategies for counter narrative evaluation, we generate evaluation scores to generated counter narrative candidates and measure the correlation to human scores collected from Amazon Mechanical Turk (AMT). We generated counter narrative responses to 180 test set examples from the Multitarget-CONAN dataset using finetuned [DialoGPT](https://huggingface.co/microsoft/DialoGPT-medium), ChatGPT and [Vicuna-v1.3 33b](https://huggingface.co/lmsys/vicuna-33b-v1.3). 
+In order to test the performance of LLM-as-a-Judge strategies for counter narrative evaluation, we generate evaluation scores to generated counter narrative candidates and measure the correlation to human scores collected from Amazon Mechanical Turk (AMT). We generated counter narrative responses to 180 test set examples from the [Multitarget-CONAN](https://github.com/marcoguerini/CONAN) dataset using finetuned [DialoGPT](https://huggingface.co/microsoft/DialoGPT-medium), ChatGPT and [Vicuna-v1.3 33b](https://huggingface.co/lmsys/vicuna-33b-v1.3). 
 
 All generation code and generated counter narrative candidates can be found in `generation`.
 
